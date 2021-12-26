@@ -1,60 +1,156 @@
 import java.util.Random;
 
 public class Generator {
-    String generate(int length) {
+    String generate() {
+        Dictionary dictionary = new Dictionary();
         Random random = new Random();
-        int left_length = length - 2;
-        String generatedLine = "St";
-        while (generatedLine.matches(".*[A-Z].*")) {
-            generatedLine = generatedLine.replaceAll("St", "S\\$");
-            if (generatedLine.contains("S")) {
-                if (left_length > 2) {
-                    generatedLine = generatedLine.replaceAll("S", "BA");
-                    left_length -= 1;
+        String generatedLine = "Sentence ";
+        Boolean flag = true;
+        while (flag) {
+            generatedLine = generatedLine.replaceAll("Sentence ", "Statement ");
+            if (generatedLine.contains("Statement")) {
+                if (random.nextInt(2) == 0) {
+                    generatedLine = generatedLine.replaceAll("Statement ", "FPC ");
                 } else {
-                    if (random.nextInt(2) == 1) {
-                        generatedLine = generatedLine.replaceAll("S", "BA");
-                        left_length -= 1;
-                    } else {
-                        generatedLine = generatedLine.replaceAll("S", "AAd");
-                        left_length -= 2;
-                    }
+                    generatedLine = generatedLine.replaceAll("Statement ", "T FPC Y ");
                 }
             }
-            if (generatedLine.contains("A")) {
-                if (left_length < 0) {
-                    generatedLine = generatedLine.replaceFirst("A", "");
-                    left_length += 1;
+            if (generatedLine.contains("T")) {
+                if (random.nextInt(2) == 0) {
+                    generatedLine = generatedLine.replaceAll("T ", "By H ");
                 } else {
-                    if (generatedLine.contains("B")) {
-                        if (random.nextInt(2) == 1) {
-                            generatedLine = generatedLine.replaceFirst("A", "");
-                            left_length += 1;
-                        } else {
-                            generatedLine = generatedLine.replaceFirst("A", "a");
-                        }
-                    } else {
-                        generatedLine = generatedLine.replaceFirst("A", "a");
-                    }
+                    generatedLine = generatedLine.replaceAll("T ", "In G ");
                 }
             }
-            if (generatedLine.contains("B")) {
-                if (left_length < 1) {
-                    generatedLine = generatedLine.replaceAll("B", "bA");
-                    left_length -= 1;
-                } else {
-                    if (left_length == 1) {
-                        if (random.nextInt(2) == 1) {
-                            generatedLine = generatedLine.replaceAll("B", "bA");
-                            left_length -= 1;
-                        } else {
-                            generatedLine = generatedLine.replaceAll("B", "cB");
-                            left_length -= 1;
-                        }
-                    } else {
-                        generatedLine = generatedLine.replaceAll("B", "cB");
-                        left_length -= 1;
-                    }
+            if (generatedLine.contains("H")) {
+                int r = random.nextInt(4);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("H ", "6 pm ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("H ", "monday ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("H ", "17th of December ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("H ", "next month ");
+                }
+            }
+            if (generatedLine.contains("G")) {
+                int r = random.nextInt(4);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("G ", "3 seconds ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("G ", "20 minutes ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("G ", "12 hours ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("G ", "2 days ");
+                }
+            }
+            if (generatedLine.contains("FPC")) {
+                generatedLine = generatedLine.replaceAll("FPC ", "Pronoun will have been Verb M ");
+            }
+            if (generatedLine.contains("Pronoun")) {
+                int r = random.nextInt(7);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "I ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "He ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "She ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "It ");
+                    case (4):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "We ");
+                    case (5):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "You ");
+                    case (6):
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "They ");
+                }
+            }
+            if (generatedLine.contains("Verb")) {
+                int r = random.nextInt(5);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("Verb ", "reading ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("Verb ", "crying of ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("Verb ", "looking at ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("Verb ", "making ");
+                    case (4):
+                        generatedLine = generatedLine.replaceAll("Verb ", "kicking ");
+                }
+            }
+            if (generatedLine.contains("M")) {
+                int r = random.nextInt(3);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("M ", "Noun ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("M ", "Noun, M ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("M ", "Noun and M ");
+                }
+            }
+            if (generatedLine.contains("Noun")) {
+                int r = random.nextInt(5);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("Noun ", "book ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("Noun ", "homework ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("Noun ", "work ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("Noun ", "program ");
+                    case (4):
+                        generatedLine = generatedLine.replaceAll("Noun ", "dreams ");
+                }
+            }
+            if (generatedLine.contains("Noun,")) {
+                int r = random.nextInt(5);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("Noun, ", "book, ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("Noun, ", "homework, ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("Noun, ", "work, ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("Noun, ", "program, ");
+                    case (4):
+                        generatedLine = generatedLine.replaceAll("Noun, ", "dreams, ");
+                }
+            }
+            if (generatedLine.contains("Y")) {
+                generatedLine = generatedLine.replaceAll("Y ", "for U ");
+            }
+            if (generatedLine.contains("U")) {
+                generatedLine = generatedLine.replaceAll("U ", "4 Four ");
+            }
+            if (generatedLine.contains("Four")) {
+                int r = random.nextInt(4);
+                switch (r) {
+                    case (0):
+                        generatedLine = generatedLine.replaceAll("Four ", "minutes ");
+                    case (1):
+                        generatedLine = generatedLine.replaceAll("Four ", "hours ");
+                    case (2):
+                        generatedLine = generatedLine.replaceAll("Four ", "weeks ");
+                    case (3):
+                        generatedLine = generatedLine.replaceAll("Four ", "years ");
+                }
+            }
+            String[] words = generatedLine.split("\\s");
+            flag = false;
+            for (String word : words) {
+                if (dictionary.not_terminals.contains(word)) {
+                    flag = true;
+                    break;
                 }
             }
         }

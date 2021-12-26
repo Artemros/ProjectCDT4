@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 public class RecognizerTest {
     @Test
-    public void RecognizedTwoChar() {
+    public void RecognizedSentences() {
         ArrayList<String> sequences = new ArrayList<>();
-        //recognized by automate and regular expression
-        sequences.add("I making program");
+        sequences.add("I will have been crying of book");
+        sequences.add("By monday I will have been kicking homework for 4 weeks");
+        sequences.add("In 3 seconds I will have been kicking homework for 4 weeks");
         for (String sequence : sequences) {
             Recognizer recognizer = new Recognizer();
             int got_state = recognizer.nextState(sequence);
@@ -17,54 +18,11 @@ public class RecognizerTest {
     }
 
     @Test
-    public void RecognizedThreeChar() {
+    public void NotRecognizedSentencesCards() {
         ArrayList<String> sequences = new ArrayList<>();
-        //recognized by automate and regular expression
-        sequences.add("ad$");
-        sequences.add("ba$");
-        sequences.add("cb$");
-        for (String sequence : sequences) {
-            Recognizer recognizer = new Recognizer();
-            int got_state = recognizer.nextState(sequence);
-            Assert.assertEquals("SMTH WENT WRONG: " + sequence + " got state: " + got_state, 1, got_state);
-        }
-    }
-
-    @Test
-    public void RecognizedFourChar() {
-        ArrayList<String> sequences = new ArrayList<>();
-        //recognized by automate and regular expression
-        sequences.add("aad$");
-        sequences.add("baa$");
-        sequences.add("cba$");
-        sequences.add("ccb$");
-        for (String sequence : sequences) {
-            Recognizer recognizer = new Recognizer();
-            int got_state = recognizer.nextState(sequence);
-            Assert.assertEquals("SMTH WENT WRONG: " + sequence + " got state: " + got_state, 1, got_state);
-        }
-    }
-
-    @Test
-    public void RecognizedFiveChar() {
-        ArrayList<String> sequences = new ArrayList<>();
-        //recognized by automate and regular expression
-        sequences.add("cbaa$");
-        sequences.add("ccba$");
-        sequences.add("cccb$");
-        for (String sequence : sequences) {
-            Recognizer recognizer = new Recognizer();
-            int got_state = recognizer.nextState(sequence);
-            Assert.assertEquals("SMTH WENT WRONG: " + sequence + " got state: " + got_state, 1, got_state);
-        }
-    }
-
-    @Test
-    public void RecognizedByOnlyAutomate() {
-        ArrayList<String> sequences = new ArrayList<>();
-        //recognized by automate and NOT regular expression
-        sequences.add("aabaccbcb");
-        sequences.add("aadd$");
+        sequences.add("will I have been crying of book");
+        sequences.add("By monday I will have been kicking homework for 4 I");
+        sequences.add("I will have have been crying of book");
         for (String sequence : sequences) {
             Recognizer recognizer = new Recognizer();
             int got_state = recognizer.nextState(sequence);
@@ -73,30 +31,15 @@ public class RecognizerTest {
     }
 
     @Test
-    public void NotRecognizedByBoth() {
+    public void NotRecognizedSentencesOutOfBounds() {
         ArrayList<String> sequences = new ArrayList<>();
-        //NOT recognized by automate and regular expression
-        sequences.add("bbb");
-        sequences.add("cca");
-        for (String sequence : sequences) {
-            Recognizer recognizer = new Recognizer();
-            int got_state = recognizer.nextState(sequence);
-            Assert.assertEquals("SMTH WENT WRONG: " + sequence + " got state: " + got_state, 0, got_state);
-        }
-    }
-
-    @Test
-    public void RecognizerTestRecognizedNotAlphChar() {
-        ArrayList<String> sequences = new ArrayList<>();
-        //NOT recognized symbols
-        sequences.add("aaccb1");
-        sequences.add("223");
-        sequences.add("aa2ccb");
-        sequences.add("waaccb");
+        sequences.add("I will did have been crying of book");
         for (String sequence : sequences) {
             Recognizer recognizer = new Recognizer();
             int got_state = recognizer.nextState(sequence);
             Assert.assertEquals("SMTH WENT WRONG: " + sequence + " got state: " + got_state, -1, got_state);
         }
     }
+
+
 }
