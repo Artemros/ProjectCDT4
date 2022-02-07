@@ -2,209 +2,202 @@ import java.util.Set;
 
 public class Dictionary {
     Set<String> terminals = Set.of("will", "have", "been"
-            ,"I", "He", "She", "It", "We", "You", "They"
+            , "I", "he", "she", "it", "we", "you", "they"
             , "reading", "crying", "of", "looking", "at", "making", "kicking"
             , "book", "homework", "work", "program", "dreams"
             , "book,", "homework,", "work,", "program,", "dreams,", "and"
             , "6", "pm", "By", "monday", "17th", "December", "next", "month"
             , "In", "3", "seconds", "20", "12", "2", "days"
-            , "for", "4", "minutes", "hours", "weeks", "years");
-    Set<String> not_terminals = Set.of("Sentence", "Statement", "FPC", "Pronoun", "Verb", "Noun", "Noun,", "T", "H", "G", "Y", "U", "M", "Four");
+            , "for", "4", "minutes", "hours", "weeks", "years", "", ".", "respectively.", "-", ",");
+    Set<String> not_terminals = Set.of("Sentence", "Statement", "FPC", "Pronoun", "Verb", "Noun", "Noun,", "T", "H", "G", "Y", "U", "M", "Four", "ME");
 
-    Integer GetLookUpTableNumber(String current_in_stack, String current_in_text){
-        switch (current_in_stack){
-            case ("Sentence"):{
-                switch (current_in_text){
-                    case("I"):
-                    case("He"):
-                    case("She"):
-                    case("It"):
-                    case("We"):
-                    case("You"):
-                    case("They"):
-                    case("By"):
-                    case("In"):
+    Integer GetLookUpTableNumber(String current_in_stack, String current_in_text) {
+        switch (current_in_stack) {
+            case ("Sentence"): {
+                switch (current_in_text) {
+                    case ("By"):
+                    case ("In"):
                         return 1;
                     default:
                         return -1;
                 }
             }
-            case ("Statement"):{
-                switch (current_in_text){
-                    case("I"):
-                    case("He"):
-                    case("She"):
-                    case("It"):
-                    case("We"):
-                    case("You"):
-                    case("They"):
-                        return 2;
-                    case("By"):
-                    case("In"):
+            case ("Statement"): {
+                switch (current_in_text) {
+                    case ("By"):
+                    case ("In"):
                         return 3;
                     default:
                         return -1;
                 }
             }
-            case ("FPC"):{
-                switch (current_in_text){
-                    case("I"):
-                    case("He"):
-                    case("She"):
-                    case("It"):
-                    case("We"):
-                    case("You"):
-                    case("They"):
+            case ("FPC"): {
+                switch (current_in_text) {
+                    case ("I"):
+                    case ("he"):
+                    case ("she"):
+                    case ("it"):
+                    case ("we"):
+                    case ("you"):
+                    case ("they"):
                         return 4;
                     default:
                         return -1;
                 }
             }
-            case ("Pronoun"):{
-                switch (current_in_text){
-                    case("I"):
+            case ("Pronoun"): {
+                switch (current_in_text) {
+                    case ("I"):
                         return 5;
-                    case("He"):
+                    case ("he"):
                         return 6;
-                    case("She"):
+                    case ("she"):
                         return 7;
-                    case("It"):
+                    case ("it"):
                         return 8;
-                    case("We"):
+                    case ("we"):
                         return 9;
-                    case("You"):
+                    case ("you"):
                         return 10;
-                    case("They"):
+                    case ("they"):
                         return 11;
                     default:
                         return -1;
                 }
             }
-            case ("Verb"):{
-                switch (current_in_text){
-                    case("reading"):
+            case ("Verb"): {
+                switch (current_in_text) {
+                    case ("reading"):
                         return 12;
-                    case("crying"):
+                    case ("crying"):
                         return 13;
-                    case("looking"):
+                    case ("looking"):
                         return 14;
-                    case("making"):
+                    case ("making"):
                         return 15;
-                    case("kicking"):
+                    case ("kicking"):
                         return 16;
                     default:
                         return -1;
                 }
             }
-            case ("Noun"):{
-                switch (current_in_text){
-                    case("book"):
+            case ("Noun"): {
+                switch (current_in_text) {
+                    case ("book"):
                         return 17;
-                    case("homework"):
+                    case ("homework"):
                         return 18;
-                    case("work"):
+                    case ("work"):
                         return 19;
-                    case("program"):
+                    case ("program"):
                         return 20;
-                    case("dreams"):
+                    case ("dreams"):
                         return 21;
                     default:
                         return -1;
                 }
             }
-            case ("Noun,"):{
-                switch (current_in_text){
-                    case("book,"):
+            case ("Noun,"): {
+                switch (current_in_text) {
+                    case ("book,"):
                         return 42;
-                    case("homework,"):
+                    case ("homework,"):
                         return 43;
-                    case("work,"):
+                    case ("work,"):
                         return 44;
-                    case("program,"):
+                    case ("program,"):
                         return 45;
-                    case("dreams,"):
+                    case ("dreams,"):
                         return 46;
                     default:
                         return -1;
                 }
             }
-            case ("T"):{
-                switch (current_in_text){
-                    case("By"):
+            case ("T"): {
+                switch (current_in_text) {
+                    case ("By"):
                         return 22;
-                    case("In"):
+                    case ("In"):
                         return 23;
                     default:
                         return -1;
                 }
             }
-            case ("H"):{
-                switch (current_in_text){
-                    case("6"):
+            case ("H"): {
+                switch (current_in_text) {
+                    case ("6"):
                         return 24;
-                    case("monday"):
+                    case ("monday"):
                         return 25;
-                    case("17th"):
+                    case ("17th"):
                         return 26;
-                    case("next"):
+                    case ("next"):
                         return 27;
                     default:
                         return -1;
                 }
             }
-            case ("G"):{
-                switch (current_in_text){
-                    case("3"):
+            case ("G"): {
+                switch (current_in_text) {
+                    case ("3"):
                         return 28;
-                    case("20"):
+                    case ("20"):
                         return 29;
-                    case("12"):
+                    case ("12"):
                         return 30;
-                    case("2"):
+                    case ("2"):
                         return 31;
                     default:
                         return -1;
                 }
             }
-            case ("Y"):{
-                if ("for".equals(current_in_text)) {
-                    return 32;
+            case ("Y"): {
+                switch (current_in_text) {
+                    case ("for"):
+                        return 32;
+                    default:
+                        return -1;
                 }
-                return -1;
             }
-            case ("U"):{
+            case ("U"): {
                 if ("4".equals(current_in_text)) {
                     return 40;
                 }
                 return -1;
             }
-            case ("M"):{
-                switch (current_in_text){
-                    case("book"):
-                    case("homework"):
-                    case("work"):
-                    case("program"):
-                    case("dreams"):
+            case ("M"): {
+                switch (current_in_text) {
+                    case ("book"):
+                    case ("homework"):
+                    case ("work"):
+                    case ("program"):
+                    case ("dreams"):
                         return 37;
-                    case("book,"):
-                    case("homework,"):
-                    case("work,"):
-                    case("program,"):
-                    case("dreams,"):
-                        return 38;
                     default:
                         return -1;
                 }
             }
-            case ("Four"):{
-                switch (current_in_text){
-                    case("minutes"):
+            case ("ME"): {
+                switch (current_in_text) {
+                    case (","):
+                        return 55;
+                    case("and"):
+                        return 56;
+                    case("for"):
+                        return 57;
+                    default:
+                        return -1;
+                }
+            }
+            case ("Four"): {
+                switch (current_in_text) {
+                    case ("minutes"):
                         return 33;
-                    case("hours"):
+                    case ("hours"):
                         return 34;
-                    case("weeks"):
+                    case ("weeks"):
                         return 35;
-                    case("years"):
+                    case ("years"):
                         return 36;
                     default:
                         return -1;
@@ -213,30 +206,29 @@ public class Dictionary {
         }
         return 0;
     }
+
     String getProductionByNumber(Integer key) {
         switch (key) {
             case (1):
-                return "Statement";
-            case (2):
-                return "FPC";
+                return "Statement ";
             case (3):
-                return "T FPC Y";
+                return "T FPC - respectively";
             case (4):
                 return "Pronoun will have been Verb M";
             case (5):
                 return "I";
             case (6):
-                return "He";
+                return "he";
             case (7):
-                return "She";
+                return "she";
             case (8):
-                return "It";
+                return "it";
             case (9):
-                return "We";
+                return "we";
             case (10):
-                return "You";
+                return "you";
             case (11):
-                return "They";
+                return "they";
             case (12):
                 return "reading";
             case (13):
@@ -288,12 +280,12 @@ public class Dictionary {
             case (36):
                 return "years";
             case (37):
-                return "Noun";
+                return "Noun ME Y";
             case (38):
                 return "Noun, M";
             case (39):
                 return "Noun and M";
-            case(40):
+            case (40):
                 return "4 Four";
             case (42):
                 return "book,";
@@ -315,7 +307,19 @@ public class Dictionary {
                 return "program and M";
             case (51):
                 return "dreams and M";
-            case(-1):
+            case (52):
+                return ".";
+            case (53):
+                return "also Statement";
+            case(54):
+                return "over U";
+            case(55):
+                return ", M";
+            case(56):
+                return "and M";
+            case(57):
+                return "";
+            case (-1):
                 return "DANGER";
         }
         return "";
@@ -323,27 +327,25 @@ public class Dictionary {
 
     Integer getNumberByProduction(String key) {
         switch (key) {
-            case ("Statement"):
+            case ("Statement ."):
                 return 1;
-            case ("FPC"):
-                return 2;
-            case ("T FPC Y"):
+            case ("T FPC - respectively"):
                 return 3;
             case ("Pronoun will have been Verb M"):
                 return 4;
             case ("I"):
                 return 5;
-            case ("He"):
+            case ("he"):
                 return 6;
-            case ("She"):
+            case ("she"):
                 return 7;
-            case ("It"):
+            case ("it"):
                 return 8;
-            case ("We"):
+            case ("we"):
                 return 9;
-            case ("You"):
+            case ("you"):
                 return 10;
-            case ("They"):
+            case ("they"):
                 return 11;
             case ("reading"):
                 return 12;
@@ -401,7 +403,7 @@ public class Dictionary {
                 return 38;
             case ("Noun and M"):
                 return 39;
-            case("4 Four"):
+            case ("4 Four"):
                 return 40;
             case ("book,"):
                 return 42;
@@ -423,11 +425,21 @@ public class Dictionary {
                 return 50;
             case ("dreams and M"):
                 return 51;
+            case ("."):
+                return 52;
+            case ("also Statement"):
+                return 53;
+            case("over U"):
+                return 54;
+            case(", M"):
+                return 55;
+            case("and M"):
+                return 56;
         }
         return -1;
     }
 
-    Boolean isNoun(String n){
+    Boolean isNoun(String n) {
         return n.equals("book") || n.equals("homework") || n.equals("work") || n.equals("program") || n.equals("dreams");
     }
 //    String decompose(String not_term) {

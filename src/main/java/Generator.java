@@ -4,17 +4,11 @@ public class Generator {
     String generate() {
         Dictionary dictionary = new Dictionary();
         Random random = new Random();
-        String generatedLine = "Sentence ";
+        String generatedLine = "Sentence .";
         Boolean flag = true;
         while (flag) {
             generatedLine = generatedLine.replaceAll("Sentence ", "Statement ");
-            if (generatedLine.contains("Statement")) {
-                if (random.nextInt(2) == 0) {
-                    generatedLine = generatedLine.replaceAll("Statement ", "FPC ");
-                } else {
-                    generatedLine = generatedLine.replaceAll("Statement ", "T FPC Y ");
-                }
-            }
+            generatedLine = generatedLine.replaceAll("Statement ", "T FPC - respectively");
             if (generatedLine.contains("T")) {
                 if (random.nextInt(2) == 0) {
                     generatedLine = generatedLine.replaceAll("T ", "By H ");
@@ -57,17 +51,17 @@ public class Generator {
                     case (0):
                         generatedLine = generatedLine.replaceAll("Pronoun ", "I ");
                     case (1):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "He ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "he ");
                     case (2):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "She ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "she ");
                     case (3):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "It ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "it ");
                     case (4):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "We ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "we ");
                     case (5):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "You ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "you ");
                     case (6):
-                        generatedLine = generatedLine.replaceAll("Pronoun ", "They ");
+                        generatedLine = generatedLine.replaceAll("Pronoun ", "they ");
                 }
             }
             if (generatedLine.contains("Verb")) {
@@ -85,15 +79,16 @@ public class Generator {
                         generatedLine = generatedLine.replaceAll("Verb ", "kicking ");
                 }
             }
-            if (generatedLine.contains("M")) {
+            generatedLine = generatedLine.replaceAll("M ", "Noun ME Y ");
+            if (generatedLine.contains("ME")) {
                 int r = random.nextInt(3);
                 switch (r) {
                     case (0):
-                        generatedLine = generatedLine.replaceAll("M ", "Noun ");
+                        generatedLine = generatedLine.replaceAll("ME ", ", M ");
                     case (1):
-                        generatedLine = generatedLine.replaceAll("M ", "Noun, M ");
+                        generatedLine = generatedLine.replaceAll("ME ", "and M ");
                     case (2):
-                        generatedLine = generatedLine.replaceAll("M ", "Noun and M ");
+                        generatedLine = generatedLine.replaceAll("ME ", "");
                 }
             }
             if (generatedLine.contains("Noun")) {
@@ -126,9 +121,7 @@ public class Generator {
                         generatedLine = generatedLine.replaceAll("Noun, ", "dreams, ");
                 }
             }
-            if (generatedLine.contains("Y")) {
-                generatedLine = generatedLine.replaceAll("Y ", "for U ");
-            }
+            generatedLine = generatedLine.replaceAll("Y ", "for U ");
             if (generatedLine.contains("U")) {
                 generatedLine = generatedLine.replaceAll("U ", "4 Four ");
             }

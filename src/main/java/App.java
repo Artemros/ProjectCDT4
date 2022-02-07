@@ -34,26 +34,13 @@ public class App {
             }
             if (globalFlag) {
                 if (answer == 0) {
-                    int len = -1;
-                    System.out.println("Enter length of sequence: ");
-                    String sLen = in.nextLine();
-                    if (sLen.matches("\\d+|-\\d")) {
-                        int gotA = Integer.parseInt(sLen);
-                        if (gotA < 2 || gotA > 100) {
-                            System.out.println("Wrong input of length of sequence to create. Out of range. Needed range [2..100]");
-                        } else {
-                            len = gotA;
-                            String stringToCheck = generator.generate();
-                            System.out.println("Generated sequence:" + stringToCheck);
-                            Recognizer recognizer = new Recognizer();
-                            if (recognizer.nextState(stringToCheck) == 1) {
-                                System.out.println("Recognizer recognized generated sequence");
-                            } else {
-                                System.out.println("Something went wrong");
-                            }
-                        }
+                    String stringToCheck = generator.generate();
+                    System.out.println("Generated sequence:" + stringToCheck);
+                    Recognizer recognizer = new Recognizer();
+                    if (recognizer.nextState(stringToCheck) == 1) {
+                        System.out.println("Recognizer recognized generated sequence");
                     } else {
-                        System.out.println("Wrong input of length of sequence to create. Not int input.");
+                        System.out.println("Something went wrong");
                     }
 
 
@@ -69,7 +56,7 @@ public class App {
                     } else if (got_state == 0) {
                         System.out.println("Your sequence was not recognized");
                     } else if (got_state == -1) {
-                        System.out.println("Your sequence has characters not from your language");
+                        System.out.println("Your sequence has words not from your language");
                     } else {
                         System.out.println("SMTH WENT WRONG");
                     }
